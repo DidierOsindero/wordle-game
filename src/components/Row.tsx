@@ -5,5 +5,25 @@ interface RowProps {
 }
 
 export const Row = ({ evaluatedGuess }: RowProps): JSX.Element => {
-  return <div className="ctn-row">Row</div>;
+  if (evaluatedGuess) {
+    return (
+      <div className="ctn-row">
+        <div>{evaluatedGuess[0].value}</div>
+        <div>{evaluatedGuess[1].value}</div>
+        <div>{evaluatedGuess[2].value}</div>
+        <div>{evaluatedGuess[3].value}</div>
+        <div>{evaluatedGuess[4].value}</div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="ctn-row">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
+  }
 };
