@@ -3,10 +3,29 @@ import { MarkedGuess } from "../utils/types";
 
 interface RowProps {
   evaluatedGuess: MarkedGuess;
+  currentGuess: string;
+  turn: number;
+  rowNumber: number;
 }
 
-export const Row = ({ evaluatedGuess }: RowProps): JSX.Element => {
-  if (evaluatedGuess) {
+export const Row = ({
+  evaluatedGuess,
+  currentGuess,
+  turn,
+  rowNumber,
+}: RowProps): JSX.Element => {
+  if (rowNumber === turn) {
+    console.log(rowNumber === turn);
+    return (
+      <div className="row">
+        <div>{currentGuess[0]}</div>
+        <div>{currentGuess[1]}</div>
+        <div>{currentGuess[2]}</div>
+        <div>{currentGuess[3]}</div>
+        <div>{currentGuess[4]}</div>
+      </div>
+    );
+  } else if (evaluatedGuess) {
     return (
       <div className="row">
         <div
