@@ -4,7 +4,21 @@
   padding: 2rem;
   text-align: center;
 }
-.ctn-row {
-  display: grid;
-  grid-template-columns: 4rem 4rem 4rem 4rem 4rem;
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.row > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid rgba(0, 0, 0, 0.267) 2px;
+  line-height: 2rem;
+  margin: 1rem;
+  height: 3rem;
+  width: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5rem;
 }
