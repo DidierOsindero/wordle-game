@@ -16,11 +16,7 @@ export const GameGrid = ({
   return (
     <div className="ctn-game-grid">
       {previousGuessesEvaluated.map((evaluatedGuess, i) => {
-        return (
-          <div key={i}>
-            <Row evaluatedGuess={evaluatedGuess} />
-          </div>
-        );
+        return <Row evaluatedGuess={evaluatedGuess} key={i} />;
       })}
     </div>
   );
