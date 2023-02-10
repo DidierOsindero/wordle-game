@@ -18,11 +18,11 @@ export const Row = ({ evaluatedGuess }: RowProps): JSX.Element => {
   } else {
     return (
       <div className="ctn-row">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div>{"-"}</div>
+        <div>{"-"}</div>
+        <div>{"-"}</div>
+        <div>{"-"}</div>
+        <div>{"-"}</div>
       </div>
     );
   }

@@ -15,8 +15,12 @@ export const GameGrid = ({
 }: GameGridProps): JSX.Element => {
   return (
     <div className="ctn-game-grid">
-      {previousGuessesEvaluated.map((evaluatedGuess) => {
-        return <Row evaluatedGuess={evaluatedGuess} />;
+      {previousGuessesEvaluated.map((evaluatedGuess, i) => {
+        return (
+          <div key={i}>
+            <Row evaluatedGuess={evaluatedGuess} />
+          </div>
+        );
       })}
     </div>
   );
