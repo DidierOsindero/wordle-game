@@ -1,3 +1,4 @@
+import { evaluateGuess } from "../utils/evaluateGuess";
 import { MarkedGuess } from "../utils/types";
 import { Row } from "./Row";
 
@@ -14,8 +15,9 @@ export const GameGrid = ({
 }: GameGridProps): JSX.Element => {
   return (
     <div className="ctn-game-grid">
-      {}
-      <Row />
+      {previousGuessesEvaluated.map((evaluatedGuess) => {
+        return <Row evaluatedGuess={evaluatedGuess} />;
+      })}
     </div>
   );
 };
