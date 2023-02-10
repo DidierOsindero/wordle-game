@@ -28,29 +28,19 @@ export const Row = ({
   } else if (evaluatedGuess) {
     return (
       <div className="row">
-        <div
-          style={{ backgroundColor: statusToColour(evaluatedGuess[0].status) }}
-        >
+        <div className={statusToColour(evaluatedGuess[0].status)}>
           {evaluatedGuess[0].value}
         </div>
-        <div
-          style={{ backgroundColor: statusToColour(evaluatedGuess[1].status) }}
-        >
+        <div className={statusToColour(evaluatedGuess[1].status)}>
           {evaluatedGuess[1].value}
         </div>
-        <div
-          style={{ backgroundColor: statusToColour(evaluatedGuess[2].status) }}
-        >
+        <div className={statusToColour(evaluatedGuess[2].status)}>
           {evaluatedGuess[2].value}
         </div>
-        <div
-          style={{ backgroundColor: statusToColour(evaluatedGuess[3].status) }}
-        >
+        <div className={statusToColour(evaluatedGuess[3].status)}>
           {evaluatedGuess[3].value}
         </div>
-        <div
-          style={{ backgroundColor: statusToColour(evaluatedGuess[4].status) }}
-        >
+        <div className={statusToColour(evaluatedGuess[4].status)}>
           {evaluatedGuess[4].value}
         </div>
       </div>
