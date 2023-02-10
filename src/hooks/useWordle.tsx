@@ -9,12 +9,9 @@ export const useWordle = (targetWord: string) => {
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [previousGuessesEvaluated, setPreviousGuessesEvaluated] = useState<
     MarkedGuess[]
-  >([]);
+  >([...Array(6)]);
   const [previousGuesses, setPreviousGuesses] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
-  //Evaluate Guess
-  //evaluateGuess();
 
   //Save Guess To previousGuesses and previousEvaluatedGuesses
   //find out if it is correct and update isCorrect
@@ -24,7 +21,11 @@ export const useWordle = (targetWord: string) => {
       setIsCorrect(true);
     }
     setPreviousGuesses((prev) => [...prev, currentGuess]);
-    setPreviousGuessesEvaluated((prev) => [...prev, currentGuessEvaluated]);
+    setPreviousGuessesEvaluated((prev) => {
+      const newEvalutedGuesses = [...prev];
+      newEvalutedGuesses[turn] = currentGuessEvaluated;
+      return newEvalutedGuesses;
+    });
     setTurn((prev) => prev + 1);
   };
 
@@ -59,9 +60,6 @@ export const useWordle = (targetWord: string) => {
     }
   };
 
-  console.log("turn:", turn);
-  console.log("is correct:", isCorrect);
-  console.log("previous guesses:", previousGuesses);
   console.log("previous evaluatedguesses:", previousGuessesEvaluated);
 
   return {
