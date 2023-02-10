@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
+import { targetWords } from "../data/targetWords";
 import { useWordle } from "../hooks/useWordle";
-import { GameProgression } from "../utils/types";
 import { GameGrid } from "./GameGrid";
 
 export const Wordle = (): JSX.Element => {
-  //-----------------------------------------------------STATES
-  // Set initial game state as "introduction"
+  const randomIndex = Math.floor(Math.random() * targetWords.length);
+  const targetWordState = useState<string>(targetWords[randomIndex].word);
+  const targetWord = targetWordState[0];
 
-  const {
-    currentGuess,
-    previousGuessesEvaluated,
-    turn,
-    gameProgression,
-    handleKeyUp,
-  } = useWordle("apple");
+  console.log(targetWord);
+
+  const { currentGuess, previousGuessesEvaluated, turn, handleKeyUp } =
+    useWordle(targetWord);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
@@ -29,7 +27,6 @@ export const Wordle = (): JSX.Element => {
         previousGuessesEvaluated={previousGuessesEvaluated}
         turn={turn}
       />
-      <p>Current Guess: {currentGuess}</p>
     </div>
   );
 };
