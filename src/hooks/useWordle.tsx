@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { evaluateGuess } from "../utils/evaluateGuess";
-import { GameProgression, MarkedGuess } from "../utils/types";
+import { IUsedLetters, MarkedGuess } from "../utils/types";
+import { updateNewUsedLetters } from "../utils/updateUsedLetters";
 
 export const useWordle = (targetWord: string) => {
   const [turn, setTurn] = useState<number>(0);
-  const [gameProgression, setGameProgression] =
-    useState<GameProgression>("introduction");
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [previousGuessesEvaluated, setPreviousGuessesEvaluated] = useState<
     MarkedGuess[]
   >([...Array(6)]);
   const [previousGuesses, setPreviousGuesses] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [usedLetters, setUsedLetters] = useState<IUsedLetters>({});
 
   //Save Guess To previousGuesses and previousEvaluatedGuesses
   //find out if it is correct and update isCorrect
@@ -26,8 +26,13 @@ export const useWordle = (targetWord: string) => {
       newEvalutedGuesses[turn] = currentGuessEvaluated;
       return newEvalutedGuesses;
     });
+    setUsedLetters((prev) => {
+      return updateNewUsedLetters(prev, currentGuessEvaluated);
+    });
     setTurn((prev) => prev + 1);
   };
+
+  console.log(usedLetters);
 
   //Handle keyup event
   const handleKeyUp = ({ key }: KeyboardEvent) => {
@@ -60,13 +65,10 @@ export const useWordle = (targetWord: string) => {
     }
   };
 
-  console.log("previous evaluatedguesses:", previousGuessesEvaluated);
-
   return {
     currentGuess,
     previousGuessesEvaluated,
     turn,
-    gameProgression,
     handleKeyUp,
   };
 };
