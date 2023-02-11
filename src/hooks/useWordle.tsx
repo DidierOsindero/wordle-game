@@ -14,9 +14,6 @@ export const useWordle = (targetWord: string) => {
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [usedLetters, setUsedLetters] = useState<IUsedLetters>({});
 
-  //Save Guess To previousGuesses and previousEvaluatedGuesses
-  //find out if it is correct and update isCorrect
-  //increase turn by 1
   const addNewGuess = (currentGuessEvaluated: MarkedGuess) => {
     if (currentGuess === targetWord) {
       setIsCorrect(true);
