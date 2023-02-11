@@ -28,7 +28,7 @@ export const Wordle = (): JSX.Element => {
         previousGuessesEvaluated={previousGuessesEvaluated}
         turn={turn}
       />
-      {/* <Keyboard /> */}
+      <Keyboard />
       {/* <div className="modal">
         <p className="inner-modal">Well Done!</p>
       </div> */}

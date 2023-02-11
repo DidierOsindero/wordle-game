@@ -14,3 +14,7 @@ export interface IChar {
   status: Status;
 }
 export type Status = "not included" | "matched" | "included";
+
+export interface IUsedLetters {
+  [key: string]: Status;
+}

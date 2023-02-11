@@ -1,6 +1,6 @@
-export const statusToColour = (
-  status: "not included" | "matched" | "included"
-): "green" | "yellow" | "grey" => {
+import { Status } from "./types";
+
+export const statusToColour = (status: Status): "green" | "yellow" | "grey" => {
   switch (status) {
     case "not included":
       return "grey";
