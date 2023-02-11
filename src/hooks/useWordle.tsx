@@ -34,6 +34,8 @@ export const useWordle = (targetWord: string) => {
 
   //Handle keyup event
   const handleKeyUp = (key: string) => {
+    if (isCorrect) return;
+
     const alphabet = /^[a-z]$/i;
     const isLessThanSixChars = currentGuess.length < 5;
     const isFiveChars = currentGuess.length === 5;
@@ -69,5 +71,6 @@ export const useWordle = (targetWord: string) => {
     turn,
     handleKeyUp,
     usedLetters,
+    isCorrect,
   };
 };
