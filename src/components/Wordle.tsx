@@ -20,9 +20,13 @@ export const Wordle = (): JSX.Element => {
   } = useWordle(targetWord);
 
   useEffect(() => {
-    window.addEventListener("keyup", handleKeyUp);
+    //create a parent function so event.key can be passed into handelKeyUp directly
+    function listener(e: KeyboardEvent) {
+      handleKeyUp(e.key);
+    }
+    window.addEventListener("keyup", listener);
 
-    return () => window.removeEventListener("keyup", handleKeyUp);
+    return () => window.removeEventListener("keyup", listener);
   }, [handleKeyUp]);
 
   return (
@@ -33,7 +37,7 @@ export const Wordle = (): JSX.Element => {
         previousGuessesEvaluated={previousGuessesEvaluated}
         turn={turn}
       />
-      <Keyboard usedLetters={usedLetters} />
+      <Keyboard usedLetters={usedLetters} handleKeyUp={handleKeyUp} />
       {/* <div className="modal">
         <p className="inner-modal">Well Done!</p>
       </div> */}

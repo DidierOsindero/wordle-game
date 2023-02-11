@@ -4,8 +4,12 @@ import { IUsedLetters } from "../utils/types";
 
 interface KeyboardProps {
   usedLetters: IUsedLetters;
+  handleKeyUp: (key: string) => void;
 }
-export const Keyboard = ({ usedLetters }: KeyboardProps): JSX.Element => {
+export const Keyboard = ({
+  usedLetters,
+  handleKeyUp,
+}: KeyboardProps): JSX.Element => {
   return (
     <div className="ctn-keyboard">
       {letters.map((letter) => {
@@ -15,6 +19,7 @@ export const Keyboard = ({ usedLetters }: KeyboardProps): JSX.Element => {
               usedLetters[letter] && statusToColour(usedLetters[letter])
             }`}
             key={letter}
+            onClick={() => handleKeyUp(letter)}
           >
             {letter}
           </div>

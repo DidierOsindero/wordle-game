@@ -33,7 +33,7 @@ export const useWordle = (targetWord: string) => {
   };
 
   //Handle keyup event
-  const handleKeyUp = ({ key }: KeyboardEvent) => {
+  const handleKeyUp = (key: string) => {
     const alphabet = /^[a-z]$/i;
     const isLessThanSixChars = currentGuess.length < 5;
     const isFiveChars = currentGuess.length === 5;
