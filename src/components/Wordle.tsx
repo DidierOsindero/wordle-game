@@ -3,6 +3,7 @@ import { targetWords } from "../data/targetWords";
 import { useWordle } from "../hooks/useWordle";
 import { GameGrid } from "./GameGrid";
 import { Keyboard } from "./Keyboard";
+import { ResultsPopUp } from "./ResultsPopUp";
 
 export const Wordle = (): JSX.Element => {
   const randomIndex = Math.floor(Math.random() * targetWords.length);
@@ -17,6 +18,7 @@ export const Wordle = (): JSX.Element => {
     turn,
     handleKeyUp,
     usedLetters,
+    isCorrect,
   } = useWordle(targetWord);
 
   useEffect(() => {
@@ -38,9 +40,7 @@ export const Wordle = (): JSX.Element => {
         turn={turn}
       />
       <Keyboard usedLetters={usedLetters} handleKeyUp={handleKeyUp} />
-      {/* <div className="modal">
-        <p className="inner-modal">Well Done!</p>
-      </div> */}
+      {isCorrect && <ResultsPopUp />}
     </div>
   );
 };

@@ -1,3 +1,7 @@
 export const ResultsPopUp = (): JSX.Element => {
-  return <div className="ctn-results-pop-up"></div>;
+  return (
+    <div className="modal">
+      <p className="inner-modal">Well Done!</p>
+    </div>
+  );
 };
