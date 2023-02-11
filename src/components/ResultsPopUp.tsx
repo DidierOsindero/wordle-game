@@ -21,7 +21,9 @@ export const ResultsPopUp = ({
           </p>
         )}
 
-        {!isCorrect && <p>Better luck next time! The word was {targetWord}.</p>}
+        {!isCorrect && (
+          <p>Better luck next time! The word was '{targetWord}'.</p>
+        )}
 
         <button onClick={handlePlayAgain} className="play-again-btn">
           Play Again

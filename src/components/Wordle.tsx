@@ -39,7 +39,7 @@ export const Wordle = (): JSX.Element => {
 
   return (
     <div className="ctn-main-content">
-      WORDLE GAME
+      <h1>Wordle</h1>
       <GameGrid
         currentGuess={currentGuess}
         previousGuessesEvaluated={previousGuessesEvaluated}
