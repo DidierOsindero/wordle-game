@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { targetWords } from "../data/targetWords";
 import { useWordle } from "../hooks/useWordle";
 import { GameGrid } from "./GameGrid";
+import { Keyboard } from "./Keyboard";
 
 export const Wordle = (): JSX.Element => {
   const randomIndex = Math.floor(Math.random() * targetWords.length);
@@ -27,6 +28,10 @@ export const Wordle = (): JSX.Element => {
         previousGuessesEvaluated={previousGuessesEvaluated}
         turn={turn}
       />
+      {/* <Keyboard /> */}
+      {/* <div className="modal">
+        <p className="inner-modal">Well Done!</p>
+      </div> */}
     </div>
   );
 };

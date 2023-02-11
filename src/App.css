@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid rgba(0, 0, 0, 0.267) 2px;
+  border: solid rgba(0, 0, 0, 0.149) 2px;
   line-height: 2rem;
   margin: 1rem;
   height: 3rem;
@@ -71,4 +71,66 @@
     transform: rotateY(0);
     background-color: var(--background-color);
   }
+}
+
+.row > div.filled {
+  animation: bounce 200ms ease forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    border-color: rgba(0, 0, 0, 0.149);
+  }
+  65% {
+    transform: scale(1.2);
+    border-color: rgba(0, 0, 0, 0.325);
+  }
+  100% {
+    transform: scale(1);
+    border-color: rgba(0, 0, 0, 0.325);
+  }
+}
+
+/*
+----------------------------------------KEYBOARD
+*/
+.ctn-keyboard {
+  margin: 1rem auto;
+  width: 30vw;
+}
+
+.letter {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 20%;
+  background-color: #eee;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0.3rem;
+  line-height: 2rem;
+  width: 2rem;
+  height: 2.3rem;
+}
+
+.modal {
+  background: rgba(227, 227, 227, 0.699);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-modal {
+  margin: auto;
+  padding: 2rem;
+  font-size: 2rem;
+  width: 30vw;
+  border-radius: 2%;
+
+  background-color: white;
 }

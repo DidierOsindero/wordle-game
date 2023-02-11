@@ -15,14 +15,13 @@ export const Row = ({
   rowNumber,
 }: RowProps): JSX.Element => {
   if (rowNumber === turn) {
-    console.log(rowNumber === turn);
     return (
       <div className="row">
-        <div>{currentGuess[0]}</div>
-        <div>{currentGuess[1]}</div>
-        <div>{currentGuess[2]}</div>
-        <div>{currentGuess[3]}</div>
-        <div>{currentGuess[4]}</div>
+        <div className={currentGuess[0] && "filled"}>{currentGuess[0]}</div>
+        <div className={currentGuess[1] && "filled"}>{currentGuess[1]}</div>
+        <div className={currentGuess[2] && "filled"}>{currentGuess[2]}</div>
+        <div className={currentGuess[3] && "filled"}>{currentGuess[3]}</div>
+        <div className={currentGuess[4] && "filled"}>{currentGuess[4]}</div>
       </div>
     );
   } else if (evaluatedGuess) {
