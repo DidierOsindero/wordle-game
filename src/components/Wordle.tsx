@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { targetWords } from "../data/targetWords";
 import { useWordle } from "../hooks/useWordle";
+import { getRandomWord } from "../utils/getRandomWord";
 import { GameGrid } from "./GameGrid";
 import { Keyboard } from "./Keyboard";
 import { ResultsPopUp } from "./ResultsPopUp";
 
 export const Wordle = (): JSX.Element => {
-  const randomIndex = Math.floor(Math.random() * targetWords.length);
-  const targetWordState = useState<string>(targetWords[randomIndex].word);
-  const targetWord = targetWordState[0];
+  const [targetWord, setTargetWord] = useState<string | null>(null);
+
+  useEffect(() => {
+    const randomWord = getRandomWord();
+    setTargetWord(randomWord);
+  }, [setTargetWord]);
 
   console.log(targetWord);
 
@@ -21,7 +25,7 @@ export const Wordle = (): JSX.Element => {
     isCorrect,
     handlePlayAgain,
     isFinished,
-  } = useWordle(targetWord);
+  } = useWordle(targetWord, setTargetWord);
 
   useEffect(() => {
     //create a parent function so event.key can be passed into handelKeyUp directly
@@ -45,7 +49,7 @@ export const Wordle = (): JSX.Element => {
       {isFinished && (
         <ResultsPopUp
           turn={turn}
-          targetWord={targetWord}
+          targetWord={targetWord as string}
           isCorrect={isCorrect}
           handlePlayAgain={handlePlayAgain}
         />

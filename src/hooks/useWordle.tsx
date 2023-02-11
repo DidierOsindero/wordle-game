@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { evaluateGuess } from "../utils/evaluateGuess";
+import { getRandomWord } from "../utils/getRandomWord";
 import { IUsedLetters, MarkedGuess } from "../utils/types";
 import { updateNewUsedLetters } from "../utils/updateUsedLetters";
 
-export const useWordle = (targetWord: string) => {
+export const useWordle = (
+  targetWord: string | null,
+  setTargetWord: React.Dispatch<React.SetStateAction<string | null>>
+) => {
   const [turn, setTurn] = useState<number>(0);
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [previousGuessesEvaluated, setPreviousGuessesEvaluated] = useState<
@@ -58,7 +62,10 @@ export const useWordle = (targetWord: string) => {
         alert("Your word must be five characters longs");
         return;
       }
-      const currentGuessEvaluated = evaluateGuess(currentGuess, targetWord);
+      const currentGuessEvaluated = evaluateGuess(
+        currentGuess,
+        targetWord as string
+      );
       addNewGuess(currentGuessEvaluated);
       setCurrentGuess("");
     }
@@ -72,6 +79,7 @@ export const useWordle = (targetWord: string) => {
     setPreviousGuessesEvaluated([...Array(6)]);
     setCurrentGuess("");
     setUsedLetters({});
+    setTargetWord(getRandomWord());
   };
 
   return {
