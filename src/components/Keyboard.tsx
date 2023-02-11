@@ -14,7 +14,7 @@ export const Keyboard = ({
     <div className="ctn-keyboard">
       {letters.map((letter) => {
         return (
-          <div
+          <button
             className={`letter ${
               usedLetters[letter] && statusToColour(usedLetters[letter])
             }`}
@@ -22,7 +22,7 @@ export const Keyboard = ({
             onClick={() => handleKeyUp(letter)}
           >
             {letter}
-          </div>
+          </button>
         );
       })}
     </div>
