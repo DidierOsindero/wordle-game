@@ -4,38 +4,210 @@
   padding: 2rem;
   text-align: center;
 }
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.row > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid rgba(0, 0, 0, 0.149) 2px;
+  line-height: 2rem;
+  margin: 0.5rem;
+  height: 3rem;
+  width: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.row > div.green {
+  --background-color: green;
+  animation: rotate 500ms ease forwards;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.row > div.yellow {
+  --background-color: yellow;
+  animation: rotate 500ms ease forwards;
+}
+
+.row > div.grey {
+  --background-color: grey;
+  animation: rotate 500ms ease forwards;
+}
+
+.row > div:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.row > div:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.row > div:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.row > div:nth-child(5) {
+  animation-delay: 400ms;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0);
+    background-color: white;
   }
-  to {
-    transform: rotate(360deg);
+  45% {
+    transform: rotateY(90deg);
+    background-color: white;
+  }
+  55% {
+    transform: rotateY(90deg);
+    background-color: var(--background-color);
+  }
+  100% {
+    transform: rotateY(0);
+    background-color: var(--background-color);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.row > div.filled {
+  animation: bounce 200ms ease forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    border-color: rgba(0, 0, 0, 0.149);
+  }
+  65% {
+    transform: scale(1.2);
+    border-color: rgba(0, 0, 0, 0.325);
+  }
+  100% {
+    transform: scale(1);
+    border-color: rgba(0, 0, 0, 0.325);
   }
 }
 
-.card {
-  padding: 2em;
+/*
+----------------------------------------KEYBOARD
+*/
+.ctn-keyboard {
+  margin: 1rem auto;
+  width: 30vw;
 }
 
-.read-the-docs {
-  color: #888;
+.ctn-keyboard > button {
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.letter {
+  display: inline-block;
+  border-radius: 20%;
+  background-color: #eee;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0.3rem;
+  line-height: 2.3rem;
+  width: 2rem;
+  height: 2.3rem;
+  transition: 150ms;
+}
+
+.letter:hover {
+  transform: scale(1.2);
+}
+
+.letter:active {
+  transform: scale(1.4);
+}
+
+.letter.grey {
+  --background-color: grey;
+  animation: dissolve 500ms forwards;
+}
+
+.letter.yellow {
+  --background-color: yellow;
+  animation: dissolve 500ms forwards;
+}
+
+.letter.green {
+  --background-color: green;
+  animation: dissolve 500ms forwards;
+}
+
+@keyframes dissolve {
+  0% {
+    background-color: #eee;
+  }
+  100% {
+    background-color: var(--background-color);
+  }
+}
+
+.modal {
+  background: rgba(227, 227, 227, 0.699);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-modal {
+  margin: auto;
+  padding: 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  width: 30vw;
+  border-radius: 2%;
+  background-color: white;
+}
+
+.play-again-btn {
+  background: #424fff;
+  border: 1px solid #424fff;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.play-again-btn:hover,
+.play-again-btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #424fff;
+}
+
+.play-again-btn:active {
+  opacity: 0.5;
 }
