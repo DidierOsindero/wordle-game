@@ -1,10 +1,21 @@
 import { letters } from "../data/letters";
-export const Keyboard = (): JSX.Element => {
+import { statusToColour } from "../utils/statusToColour";
+import { IUsedLetters } from "../utils/types";
+
+interface KeyboardProps {
+  usedLetters: IUsedLetters;
+}
+export const Keyboard = ({ usedLetters }: KeyboardProps): JSX.Element => {
   return (
     <div className="ctn-keyboard">
       {letters.map((letter) => {
         return (
-          <div className="letter" key={letter}>
+          <div
+            className={`letter ${
+              usedLetters[letter] && statusToColour(usedLetters[letter])
+            }`}
+            key={letter}
+          >
             {letter}
           </div>
         );

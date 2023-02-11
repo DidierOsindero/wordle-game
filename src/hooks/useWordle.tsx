@@ -32,8 +32,6 @@ export const useWordle = (targetWord: string) => {
     setTurn((prev) => prev + 1);
   };
 
-  console.log(usedLetters);
-
   //Handle keyup event
   const handleKeyUp = ({ key }: KeyboardEvent) => {
     const alphabet = /^[a-z]$/i;
@@ -70,5 +68,6 @@ export const useWordle = (targetWord: string) => {
     previousGuessesEvaluated,
     turn,
     handleKeyUp,
+    usedLetters,
   };
 };

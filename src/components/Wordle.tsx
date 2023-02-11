@@ -11,8 +11,13 @@ export const Wordle = (): JSX.Element => {
 
   console.log(targetWord);
 
-  const { currentGuess, previousGuessesEvaluated, turn, handleKeyUp } =
-    useWordle(targetWord);
+  const {
+    currentGuess,
+    previousGuessesEvaluated,
+    turn,
+    handleKeyUp,
+    usedLetters,
+  } = useWordle(targetWord);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
@@ -28,7 +33,7 @@ export const Wordle = (): JSX.Element => {
         previousGuessesEvaluated={previousGuessesEvaluated}
         turn={turn}
       />
-      <Keyboard />
+      <Keyboard usedLetters={usedLetters} />
       {/* <div className="modal">
         <p className="inner-modal">Well Done!</p>
       </div> */}
