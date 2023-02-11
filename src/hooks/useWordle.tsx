@@ -11,6 +11,7 @@ export const useWordle = (targetWord: string) => {
   >([...Array(6)]);
   const [previousGuesses, setPreviousGuesses] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [isFinished, setIsFinished] = useState<boolean>(false);
   const [usedLetters, setUsedLetters] = useState<IUsedLetters>({});
 
   //Save Guess To previousGuesses and previousEvaluatedGuesses
@@ -19,7 +20,8 @@ export const useWordle = (targetWord: string) => {
   const addNewGuess = (currentGuessEvaluated: MarkedGuess) => {
     if (currentGuess === targetWord) {
       setIsCorrect(true);
-    }
+      setTimeout(() => setIsFinished(true), 1000);
+    } else if (turn === 5) setTimeout(() => setIsFinished(true), 1000);
     setPreviousGuesses((prev) => [...prev, currentGuess]);
     setPreviousGuessesEvaluated((prev) => {
       const newEvalutedGuesses = [...prev];
@@ -65,6 +67,16 @@ export const useWordle = (targetWord: string) => {
     }
   };
 
+  const handlePlayAgain = () => {
+    setIsCorrect(false);
+    setIsFinished(false);
+    setTurn(0);
+    setPreviousGuesses([]);
+    setPreviousGuessesEvaluated([...Array(6)]);
+    setCurrentGuess("");
+    setUsedLetters({});
+  };
+
   return {
     currentGuess,
     previousGuessesEvaluated,
@@ -72,5 +84,7 @@ export const useWordle = (targetWord: string) => {
     handleKeyUp,
     usedLetters,
     isCorrect,
+    handlePlayAgain,
+    isFinished,
   };
 };

@@ -19,6 +19,8 @@ export const Wordle = (): JSX.Element => {
     handleKeyUp,
     usedLetters,
     isCorrect,
+    handlePlayAgain,
+    isFinished,
   } = useWordle(targetWord);
 
   useEffect(() => {
@@ -40,7 +42,14 @@ export const Wordle = (): JSX.Element => {
         turn={turn}
       />
       <Keyboard usedLetters={usedLetters} handleKeyUp={handleKeyUp} />
-      {isCorrect && <ResultsPopUp />}
+      {isFinished && (
+        <ResultsPopUp
+          turn={turn}
+          targetWord={targetWord}
+          isCorrect={isCorrect}
+          handlePlayAgain={handlePlayAgain}
+        />
+      )}
     </div>
   );
 };
