@@ -20,6 +20,19 @@ export const useWordle = (
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [usedLetters, setUsedLetters] = useState<IUsedLetters>({});
 
+  const toastAlert = (warningMessage: string) => {
+    toast.warn(warningMessage, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   const addNewGuess = (currentGuessEvaluated: MarkedGuess) => {
     if (currentGuess === targetWord) {
       setIsCorrect(true);
@@ -56,12 +69,12 @@ export const useWordle = (
 
     if (key === "Enter") {
       if (isInPreviousGuesses) {
-        toast("You aready guessed this word");
+        toastAlert("You aready guessed this word");
         return;
       }
 
       if (!isFiveChars) {
-        toast("Your word must be five characters longs");
+        toastAlert("Your word must be five characters longs");
         return;
       }
       const currentGuessEvaluated = evaluateGuess(
