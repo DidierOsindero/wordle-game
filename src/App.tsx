@@ -1,13 +1,12 @@
-import { useState } from "react";
 import "./App.css";
 import { Wordle } from "./components/Wordle";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
       <Wordle />
+      <ToastContainer />
     </div>
   );
 }
