@@ -14,8 +14,6 @@ export const Wordle = (): JSX.Element => {
     setTargetWord(randomWord);
   }, [setTargetWord]);
 
-  console.log(targetWord);
-
   const {
     currentGuess,
     previousGuessesEvaluated,
