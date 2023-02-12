@@ -3,6 +3,8 @@ import { evaluateGuess } from "../utils/evaluateGuess";
 import { getRandomWord } from "../utils/getRandomWord";
 import { IUsedLetters, MarkedGuess } from "../utils/types";
 import { updateNewUsedLetters } from "../utils/updateUsedLetters";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const useWordle = (
   targetWord: string | null,
@@ -17,6 +19,19 @@ export const useWordle = (
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [usedLetters, setUsedLetters] = useState<IUsedLetters>({});
+
+  const toastAlert = (warningMessage: string) => {
+    toast.warn(warningMessage, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   const addNewGuess = (currentGuessEvaluated: MarkedGuess) => {
     if (currentGuess === targetWord) {
@@ -54,12 +69,12 @@ export const useWordle = (
 
     if (key === "Enter") {
       if (isInPreviousGuesses) {
-        alert("You aready guessed this word");
+        toastAlert("You aready guessed this word");
         return;
       }
 
       if (!isFiveChars) {
-        alert("Your word must be five characters longs");
+        toastAlert("Your word must be five characters longs");
         return;
       }
       const currentGuessEvaluated = evaluateGuess(
