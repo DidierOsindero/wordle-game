@@ -11,5 +11,8 @@ describe("results pop-up", () => {
       .type("aaaae{enter}")
       .type("aaaaf{enter}")
       .type("aaaag{enter}");
+    cy.wait(2000);
+    cy.get(".inner-modal").should("be.visible");
+    cy.get(".inner-modal").contains("Better luck next time!");
   });
 });
