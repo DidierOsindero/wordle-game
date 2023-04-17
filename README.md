@@ -3,7 +3,6 @@
 ## <b>Check it out⤵️</b>
 
 Link to Netlify Deployment - https://didier-wordle-clone.netlify.app/  
-Link to Backend Repo - https://github.com/DidierOsindero/thoughtForum-be
 
 ## <b>Description✍🏾</b>
 
